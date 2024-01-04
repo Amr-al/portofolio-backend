@@ -1,15 +1,15 @@
 import { createConnection } from "typeorm";
-import { Projects } from "../entities/project";
-import { Skills } from "../entities/skills";
-exports.conf = async () => {
+import { Projects } from "../entities/project.js";
+import { Skills } from "../entities/skills.js";
+export const conf = async () => {
   try {
     await createConnection({
       type: "postgres",
-      host: "snuffleupagus.db.elephantsql.com",
+      host: process.env.host,
       port: 5432,
-      database: "rsrpibwi",
+      database: process.env.database,
       password: "4Y5KrcjzrFDPJmroYNPFvAA6h2h_jg-w",
-      username: "rsrpibwi",
+      username: process.env.name,
       entities:[Projects,Skills],
       synchronize: true,
     });

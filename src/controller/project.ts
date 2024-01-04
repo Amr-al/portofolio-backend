@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Projects } from "../entities/project";
+import { Projects } from "../entities/project.js";
 import { JsonContains, getRepository } from "typeorm";
 
 export const getProjects = async (req: Request, res: Response) => {

@@ -1,4 +1,4 @@
-import { sendMail } from "../utils/mails";
+import { sendMail } from "../utils/mails.js";
 
 let validateEmail = function (email: string) {
   let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

@@ -1,4 +1,4 @@
-import { Skills } from "../entities/skills";
+import { Skills } from "../entities/skills.js";
 
 export const addSkill = async(req:any,res:any)=>{
     try {

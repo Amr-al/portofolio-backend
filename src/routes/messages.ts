@@ -1,4 +1,4 @@
-import { send } from "../controller/mails";
+import { send } from "../controller/mails.js";
 
 const router = require("express").Router();
 

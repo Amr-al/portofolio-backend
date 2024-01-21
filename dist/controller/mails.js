@@ -9,31 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSkills = exports.addSkill = void 0;
-const skills_js_1 = require("../entities/skills.js");
-const addSkill = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.send = void 0;
+const mails_1 = require("../utils/mails");
+let validateEmail = function (email) {
+    let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email);
+};
+const send = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name } = req.body;
-        const result = yield skills_js_1.Skills.create({
-            name: name,
-            image: req.file.path
-        }).save();
-        return res.status(200).json(result);
+        const { name, email, message } = req.body;
+        if (!name || !email || !message)
+            return res.status(400).json(" all fields are required  ");
+        if (!validateEmail(email))
+            return res.status(400).json("wrong email");
+        (0, mails_1.sendMail)("contact request", ` <b> ${message} </b> `, email);
+        return res.status(200).json("message sent successfully");
     }
     catch (error) {
         console.log(error);
-        return res.status(500).json('something went wrong');
+        res.status(500).json("something went wrong");
     }
 });
-exports.addSkill = addSkill;
-const getSkills = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const result = yield skills_js_1.Skills.find();
-        return res.status(200).json(result);
-    }
-    catch (error) {
-        console.log(error);
-        return res.status(500).json('something went wrong');
-    }
-});
-exports.getSkills = getSkills;
+exports.send = send;

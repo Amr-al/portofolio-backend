@@ -1,6 +1,7 @@
 import { createConnection } from "typeorm";
-import { Projects } from "../entities/project.js";
-import { Skills } from "../entities/skills.js";
+import { Projects } from "../entities/project";
+import { Skills } from "../entities/skills";
+import {Message} from '../entities/message';
 export const conf = async () => {
   try {
     await createConnection({
@@ -10,7 +11,7 @@ export const conf = async () => {
       database: process.env.database,
       password: "4Y5KrcjzrFDPJmroYNPFvAA6h2h_jg-w",
       username: process.env.name,
-      entities:[Projects,Skills],
+      entities:[Projects,Skills,Message],
       synchronize: true,
     });
     console.log("connected to POSTGRES");

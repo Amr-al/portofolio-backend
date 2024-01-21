@@ -10,10 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addProject = exports.getProjectById = exports.getProjects = void 0;
-const project_js_1 = require("../entities/project.js");
+const project_1 = require("../entities/project");
 const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        let result = yield project_js_1.Projects.find();
+        let result = yield project_1.Projects.find();
         return res.status(200).json(result);
     }
     catch (err) {
@@ -25,7 +25,7 @@ exports.getProjects = getProjects;
 const getProjectById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let id = parseInt(req.params.id);
-        let result = yield project_js_1.Projects.findOneBy({ id: id });
+        let result = yield project_1.Projects.findOneBy({ id: id });
         return res.status(200).json(result);
     }
     catch (err) {
@@ -42,7 +42,7 @@ const addProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         for (let i = 0; i < req.files.length; ++i) {
             images.push(req.files[i].path);
         }
-        const result = yield project_js_1.Projects.create({
+        const result = yield project_1.Projects.create({
             description,
             tools: JSON.parse(tools),
             mainImage: (_a = req.files[0]) === null || _a === void 0 ? void 0 : _a.path,

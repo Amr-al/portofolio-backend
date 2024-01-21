@@ -1,5 +1,4 @@
-import { Request, Response } from "express";
-import { addProject, getProjectById, getProjects } from "../controller/project.js";
+import { addProject, getProjectById, getProjects } from "../controller/projectController";
 const router = require("express").Router();
 const upload = require('../utils/multer')
 

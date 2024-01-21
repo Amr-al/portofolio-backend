@@ -11,8 +11,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.conf = void 0;
 const typeorm_1 = require("typeorm");
-const project_js_1 = require("../entities/project.js");
-const skills_js_1 = require("../entities/skills.js");
+const project_1 = require("../entities/project");
+const skills_1 = require("../entities/skills");
+const message_1 = require("../entities/message");
 const conf = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, typeorm_1.createConnection)({
@@ -22,7 +23,7 @@ const conf = () => __awaiter(void 0, void 0, void 0, function* () {
             database: process.env.database,
             password: "4Y5KrcjzrFDPJmroYNPFvAA6h2h_jg-w",
             username: process.env.name,
-            entities: [project_js_1.Projects, skills_js_1.Skills],
+            entities: [project_1.Projects, skills_1.Skills, message_1.Message],
             synchronize: true,
         });
         console.log("connected to POSTGRES");

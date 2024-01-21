@@ -1,4 +1,4 @@
-import { addSkill, getSkills } from "../controller/skill.js";
+import { addSkill, getSkills } from "../controller/skillController";
 const router = require("express").Router();
 const upload = require("../utils/multer");
 

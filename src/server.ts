@@ -8,7 +8,13 @@ import AppError from "./utils/appError";
 import globalErrorHandler from "./controller/errorController";
 
 app.use(express.json());
-app.use(cors({}));
+//Allow cors for all domains
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  }) as any
+);
 app.use(morgan("dev"))
 conf();
 
